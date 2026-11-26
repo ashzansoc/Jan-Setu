@@ -1,0 +1,14 @@
+rules_version = '2';
+
+// JANSETU Firestore rules — each citizen can only read/write their own data.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+
+      match /data/{docId} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+    }
+  }
+}

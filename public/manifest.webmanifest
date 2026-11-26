@@ -1,0 +1,31 @@
+{
+  "name": "JANSETU — Your voice. Your rights. Your actions.",
+  "short_name": "JANSETU",
+  "description": "Speak in your own language and get civic problems reported, tracked and verified.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF9F3",
+  "theme_color": "#FFF9F3",
+  "lang": "en-IN",
+  "categories": [
+    "government",
+    "utilities",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/logo-dark.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-transparent.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

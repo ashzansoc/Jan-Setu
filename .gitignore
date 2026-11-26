@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# Native build output
+ios/build/
+ios/App/Pods/
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
+ios/DerivedData/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.tsbuildinfo
+
+# Agent tool state
+.zcode/

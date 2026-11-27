@@ -130,7 +130,7 @@ export function ProfileDetailsStep({
                 {t('fromGoogle')}
               </>
             ) : (
-              'इन विवरणों में बदलाव कर सकती हैं'
+              t('detailsEditable')
             )}
           </p>
         </div>
@@ -169,7 +169,7 @@ export function ProfileDetailsStep({
           label={`${t('fullName')} · ${t('required')}`}
           value={name || '—'}
           editable
-          editLabel="बदलें / Edit Name"
+          editLabel={t('editName')}
           onEdit={() => {
             setDraftName(name)
             setEditing('name')
@@ -179,7 +179,7 @@ export function ProfileDetailsStep({
         <FieldRow
           icon={<IconMail size={14} strokeWidth={2} />}
           label={t('email')}
-          value={email ?? '— ईमेल उपलब्ध नहीं • not available'}
+          value={email ?? `— ${t('emailMissing')}`}
                   editable={false}
           editLabel=""
           onEdit={() => {}}
@@ -191,7 +191,7 @@ export function ProfileDetailsStep({
           value={phone || '—'}
           note={t('mobileNote')}
           editable
-          editLabel="बदलें / Edit Mobile Number"
+          editLabel={t('editMobile')}
           onEdit={() => {
             setDraftPhone(phone)
             setEditing('phone')
@@ -229,7 +229,7 @@ export function ProfileDetailsStep({
                 onClick={() => setEditing(null)}
                 className="h-12 flex-1 rounded-xl bg-surface-container text-[14px] font-semibold text-on-surface"
               >
-                रद्द
+                {t('cancel')}
               </button>
               <button
                 type="button"
@@ -240,7 +240,7 @@ export function ProfileDetailsStep({
                 }}
                 className="h-12 flex-1 rounded-xl bg-primary text-[14px] font-bold text-on-primary"
               >
-                सहेजें
+                {t('save')}
               </button>
             </div>
           </div>

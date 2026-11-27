@@ -17,7 +17,7 @@ import {
   isNonSpeechTranscript,
   type RecorderSession,
 } from '@/lib/voice/recorder-asr'
-import { isElevenLabsActive } from '@/services/elevenlabs'
+import { isElevenLabsActive, loadVoiceConfig } from '@/services/elevenlabs'
 import { startLevels, type LevelSession } from '@/lib/voice/levels'
 import { cancelSpeech, speak } from '@/lib/voice/tts'
 import { CATEGORY_LABEL, type UiLang } from '@/lib/complaints/types'
@@ -168,10 +168,16 @@ export async function beginListening(): Promise<void> {
   // changes. Prefer recording + server-side transcription whenever we are in the
   // native shell, and keep Web Speech for real browsers.
   const native = Capacitor.isNativePlatform()
+  // The startup probe can fail on a cold launch, and a bundled app may reach
+  // the API a moment later. Retry once before telling the citizen voice is
+  // unavailable — a transient miss must not disable the microphone.
+  if (!isElevenLabsActive()) await loadVoiceConfig()
   const useWebSpeech = isAsrSupported() && !native
   const useRecorder = isRecorderSupported() && isElevenLabsActive() && (native || !isAsrSupported())
   if (!useWebSpeech && !useRecorder) {
-    state().setError('micUnavailable')
+    // Distinguish "this browser cannot record" from "the voice service could
+    // not be reached", so the message tells the citizen what to do next.
+    state().setError(isRecorderSupported() ? 'voiceUnavailable' : 'micUnavailable')
     return
   }
 

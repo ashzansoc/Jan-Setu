@@ -701,6 +701,7 @@ export const en = {
     micDenied: 'Microphone permission was blocked. You can allow it in your browser settings, or type instead.',
     micNotFound: 'No microphone was found on this device. You can type instead.',
     micUnavailable: 'Voice input is not available in this browser. Try Chrome or Safari, or type instead.',
+    voiceUnavailable: 'The voice service could not be reached. Check your connection and try again, or type instead.',
     insecure: 'Voice needs a secure connection. Open JANSETU on https or localhost.',
     micBusy: 'The microphone is busy in another app. Close it and try again.',
     generic: 'Something went wrong. Please try again.',

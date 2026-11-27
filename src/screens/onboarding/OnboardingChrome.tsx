@@ -15,14 +15,16 @@ export function ObHeader({
   step,
   total,
   onBack,
+  lang = 'en',
   variant = 'default',
 }: {
   step: number
   total: number
   onBack?: () => void
+  lang?: 'hi' | 'en'
   variant?: 'default' | 'pill'
 }) {
-  const stepLabel = `चरण ${step} / ${total}`
+  const stepLabel = lang === 'hi' ? `चरण ${step} / ${total}` : `Step ${step} of ${total}`
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 bg-surface/85 pt-safe backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">

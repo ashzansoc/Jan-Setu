@@ -49,7 +49,7 @@ export function LanguageStep({ lang, onNext }: { lang: 'hi' | 'en'; onNext: () =
         <h1 className={cn('mt-2 text-[22px] font-bold leading-tight text-on-surface', lang === 'hi' && 'deva')}>
           {t('chooseLanguage')}
         </h1>
-        <p className="mt-1 text-[14px] text-on-surface-variant">Choose your language</p>
+        <p className="mt-1 text-[14px] text-on-surface-variant">{t('languageHint')}</p>
       </div>
 
       <div role="radiogroup" aria-label="Language selection" className="grid grid-cols-2 gap-3">

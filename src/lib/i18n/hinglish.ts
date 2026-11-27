@@ -702,6 +702,7 @@ export const hinglish: Dictionary = {
     micDenied: 'Microphone ki permission band hai. Aap browser settings mein allow kar sakte hain, ya likhkar bata sakte hain.',
     micNotFound: 'Is device par koi microphone nahi mila. Aap likhkar bata sakte hain.',
     micUnavailable: 'Is browser mein awaaz available nahi hai. Chrome ya Safari try karein, ya likhkar batayein.',
+    voiceUnavailable: 'Voice service se contact nahi ho saka. Connection check karein aur phir try karein, ya likhkar batayein.',
     insecure: 'Awaaz ke liye secure connection chahiye. JANSETU ko https ya localhost par kholein.',
     micBusy: 'Microphone kisi aur app mein busy hai. Use band karein aur phir try karein.',
     generic: 'Kuch galat ho gaya. Kripya phir try karein.',

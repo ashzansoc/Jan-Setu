@@ -183,7 +183,7 @@ export function PlacesScreen() {
                   <div className="mb-3 flex flex-wrap items-center gap-2">
                     <span className="inline-flex items-center gap-1 rounded-lg bg-gray-100 px-2.5 py-1 text-[0.6875rem] font-medium text-gray-600">
                       <IconBuilding size={12} className="text-orange-600" stroke={2.2} />
-                      {place.zone} • {place.ward}
+                      {[place.zone, place.ward].filter(Boolean).join(' • ') || place.locality}
                     </span>
                     {place.geoVerified && (
                       <span className="inline-flex items-center gap-1 rounded-lg bg-green-50 px-2 py-1 text-[0.625rem] font-semibold text-green-700">
@@ -299,7 +299,7 @@ export function PlacesScreen() {
                             {d.places.wardAuto}
                           </p>
                           <p className="text-[0.625rem] text-emerald-700">
-                            {draft.zone} • {draft.ward}
+                            {[draft.zone, draft.ward].filter(Boolean).join(' • ') || draft.locality}
                           </p>
                         </div>
                       </div>

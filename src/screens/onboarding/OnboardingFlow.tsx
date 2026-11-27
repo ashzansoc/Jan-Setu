@@ -52,15 +52,16 @@ export function OnboardingFlow() {
   const say = (hi: string) => void speak(hi, { lang: 'hi-IN', rate: 0.95 })
 
   return (
-    <div className="min-h-svh bg-surface pb-safe">
+    <div className="flex h-svh flex-col overflow-hidden bg-surface pb-safe">
       <ObHeader
         step={stepIndex + 1}
         total={TOTAL}
+        lang={lang}
         onBack={canGoBack ? () => setStepIndex((i) => Math.max(0, i - 1)) : undefined}
         variant={step === 'language' || step === 'ready' ? 'pill' : 'default'}
       />
 
-      <main className="mx-auto w-full max-w-[560px] pt-20">
+      <main className="mx-auto w-full max-w-[560px] flex-1 overflow-y-auto overscroll-contain pb-6 pt-20">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={step}

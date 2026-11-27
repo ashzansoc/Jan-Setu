@@ -31,6 +31,7 @@ export function HomeCheckStep({
   const [choice, setChoice] = useState<Choice>('home')
   const [detect, setDetect] = useState<DetectState>('idle')
   const [detected, setDetected] = useState<string | null>(null)
+  const [address, setAddress] = useState<{ city?: string | null; postcode?: string | null }>({})
   const [coords, setCoords] = useState<{ latitude: number; longitude: number } | null>(null)
   const t = (key: Parameters<typeof primary>[0]) => primary(key, lang)
 
@@ -42,14 +43,14 @@ export function HomeCheckStep({
       return
     }
     setCoords(result.coords)
-    const address = await reverseGeocode(result.coords)
-    if (address?.locality || address?.label) {
-      setDetected(address.locality ?? address.label)
-      setDetect('found')
-    } else {
-      // Coordinates without a readable address: keep the pincode-level fallback.
-      setDetected(`${result.coords.latitude.toFixed(3)}, ${result.coords.longitude.toFixed(3)}`)
-      setDetect('found')
+    // Show the fix immediately — the street address is a progressive
+    // enhancement and must never hold the citizen on this screen.
+    setDetected(`${result.coords.latitude.toFixed(3)}, ${result.coords.longitude.toFixed(3)}`)
+    setDetect('found')
+    const resolved = await reverseGeocode(result.coords)
+    if (resolved?.locality || resolved?.label) {
+      setDetected(resolved.locality ?? resolved.label)
+      setAddress({ city: resolved.city, postcode: resolved.postcode })
     }
   }
 
@@ -70,6 +71,8 @@ export function HomeCheckStep({
       places.updatePlace(existing.id, {
         locality: wardLabel,
         geoVerified: detect === 'found',
+        ...(address.city ? { zone: address.city } : {}),
+        ...(address.postcode ? { pincode: address.postcode } : {}),
         ...(coords ? { line1: `${wardLabel}, ${coords.latitude.toFixed(4)}, ${coords.longitude.toFixed(4)}` } : {}),
       })
     } else {
@@ -105,9 +108,6 @@ export function HomeCheckStep({
         <h1 className={cn('text-[22px] font-bold leading-tight text-on-surface', lang === 'hi' && 'deva')}>
           {t('atHome')}
         </h1>
-        <p className="mt-1 text-[14px] text-on-surface-variant">
-          {lang === 'hi' ? 'Are you at home right now?' : 'क्या आप अभी अपने घर पर हैं?'}
-        </p>
       </div>
 
       <div className="flex flex-col items-center justify-center py-4">
@@ -210,9 +210,6 @@ export function HomeCheckStep({
             <span className="flex min-w-0 flex-col">
               <span className={cn('text-[15px] font-semibold text-on-surface', lang === 'hi' && 'deva')}>
                 {t('elsewhere')}
-              </span>
-              <span className="text-[12px] text-on-surface-variant">
-                {lang === 'hi' ? 'Somewhere else' : 'कहीं और'}
               </span>
             </span>
           </span>

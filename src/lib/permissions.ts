@@ -76,8 +76,10 @@ export async function requestLocation(): Promise<
     const position = await new Promise<GeolocationPosition>((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject, {
         enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 60000,
+        // A citizen should not wait ten seconds on a screen that only needs a
+        // locality; the address lookup continues in the background anyway.
+        timeout: 6000,
+        maximumAge: 30000,
       })
     })
     return {

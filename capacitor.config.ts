@@ -11,6 +11,12 @@ const config: CapacitorConfig = {
     // disables voice (no ElevenLabs config, and no Web Speech in WebView).
     // Serve the API over TLS before shipping this to production.
     allowMixedContent: true
+  },
+  server: {
+    // Firebase's redirect sign-in navigates the WebView to the auth handler and
+    // back. Without this Capacitor would hand the auth page to the system
+    // browser, where the result can never return to the app.
+    allowNavigation: ['jansetu-d4e35.firebaseapp.com', '*.firebaseapp.com', 'accounts.google.com']
   }
 };
 

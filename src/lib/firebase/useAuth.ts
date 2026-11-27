@@ -12,6 +12,7 @@ import {
   type User,
 } from 'firebase/auth'
 import { getFirebaseAuth } from './client'
+import { Capacitor } from '@capacitor/core'
 
 export interface AuthState {
   user: User | null
@@ -69,6 +70,14 @@ export function useAuth(): AuthState {
     provider.setCustomParameters({ prompt: 'select_account' })
     try {
       await setPersistence(auth, browserLocalPersistence).catch(() => {})
+      // A WebView cannot host the popup: Android hands the auth window to
+      // Chrome and the result never returns to the app. Use the redirect flow
+      // inside the WebView (allowed via server.allowNavigation), which comes
+      // back to https://localhost and is completed by getRedirectResult above.
+      if (Capacitor.isNativePlatform()) {
+        await signInWithRedirect(auth, provider)
+        return
+      }
       await signInWithPopup(auth, provider)
     } catch (cause) {
       const code = (cause as { code?: string } | null)?.code ?? ''

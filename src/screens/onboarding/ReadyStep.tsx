@@ -61,7 +61,9 @@ export function ReadyStep({
       <div className="my-3 flex items-center justify-center">
         <span className="inline-flex items-center gap-2 rounded-full bg-secondary-container px-3.5 py-1.5 text-on-secondary-container shadow-sm">
           <span className="size-1.5 animate-pulse rounded-full bg-secondary" />
-          <span className="text-[10.5px] font-bold tracking-wide">चरण 5 / 5 • अंतिम चरण (Final Step)</span>
+          <span className="text-[10.5px] font-bold tracking-wide">
+            {lang === 'hi' ? 'चरण 5 / 5 • अंतिम चरण' : 'Step 5 of 5 • Final Step'}
+          </span>
         </span>
       </div>
 
@@ -80,15 +82,11 @@ export function ReadyStep({
           {heading}
         </h1>
         <p className="mb-4 text-[15px] font-medium text-on-surface-variant">
-          All set & verified, ready for civic action.
+          {t('readySub')}
         </p>
 
         <div className="mt-1 w-full max-w-xs rounded-lg bg-surface-low px-2 py-2.5 text-on-surface">
-          <p className={cn('text-[14px] leading-snug', lang === 'hi' && 'deva')}>
-            अब आप केवल <span className="font-semibold text-primary">बोलकर</span> अपनी नागरिक समस्या दर्ज कर सकती
-            हैं — पानी, सड़क, बिजली या सफाई।
-          </p>
-          <p className="mt-1 text-[12px] text-on-surface-variant">{t('speakToFile')}</p>
+          <p className={cn('text-[14px] leading-snug', lang === 'hi' && 'deva')}>{t('speakToFile')}</p>
         </div>
       </div>
 
@@ -112,9 +110,10 @@ export function ReadyStep({
               <span className="flex flex-col text-left">
                 <span className={cn('text-[13.5px] font-semibold text-on-surface', lang === 'hi' && 'deva')}>
                   {home.locality}
-                  {home.ward ? `, वार्ड ${home.ward}` : ''}
                 </span>
-                <span className="text-[12px] text-on-surface-variant">दक्षिण दिल्ली नगर निगम (MCD)</span>
+                <span className="text-[12px] text-on-surface-variant">
+                  {[home.zone, home.pincode].filter(Boolean).join(' • ') || t('active')}
+                </span>
               </span>
             </span>
             <IconCircleCheck size={19} strokeWidth={2} className="shrink-0 text-secondary" />
@@ -128,7 +127,9 @@ export function ReadyStep({
             </span>
             <span className="flex min-w-0 flex-col">
               <span className="truncate text-[12.5px] font-semibold text-on-surface">🗣️ हिन्दी</span>
-              <span className="truncate text-[11px] text-on-surface-variant">Hindi Voice</span>
+              <span className="truncate text-[11px] text-on-surface-variant">
+                {lang === 'hi' ? 'हिन्दी आवाज़' : 'Hindi Voice'}
+              </span>
             </span>
           </div>
           {name && (
@@ -140,7 +141,7 @@ export function ReadyStep({
                 <span className={cn('truncate text-[12.5px] font-semibold text-on-surface', lang === 'hi' && 'deva')}>
                   {name}
                 </span>
-                <span className="truncate text-[11px] text-on-surface-variant">98110•••••</span>
+                <span className="truncate text-[11px] text-on-surface-variant">{t('verified')}</span>
               </span>
             </div>
           )}
@@ -167,7 +168,6 @@ export function ReadyStep({
               <span className={cn('text-[13px] font-semibold text-on-surface', lang === 'hi' && 'deva')}>
                 {t('sampleGarbage')}
               </span>
-              <span className="text-[11.5px] text-on-surface-variant">{OB.sampleGarbage.en}</span>
             </span>
           </span>
           <svg viewBox="0 0 24 24" className="size-5 fill-primary" aria-hidden>
@@ -184,9 +184,6 @@ export function ReadyStep({
           className="flex min-h-[58px] w-full items-center justify-center gap-3 rounded-full bg-primary text-on-primary shadow-md transition-all active:scale-[0.99]"
         >
           <span className="text-[16px] font-bold">{t('start')}</span>
-          <span className="text-[13px] font-normal opacity-80">
-            | {lang === 'hi' ? 'Enter JANSETU' : 'जनसेतु शुरू करें'}
-          </span>
           <IconArrowRight size={22} strokeWidth={2.2} />
         </button>
         <span className="flex items-center justify-center gap-1.5 text-[12px] text-on-surface-variant">

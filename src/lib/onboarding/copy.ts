@@ -13,7 +13,7 @@ export interface ObString {
 }
 
 export const OB = {
-  brand: { hi: 'जनसेतु • Voice to Action', en: 'JANSETU • Voice to Action' },
+  brand: { hi: 'जनसेतु • Voice to Action', en: 'Jansetu • Voice to Action' },
   listen: { hi: 'सुनें • Listen', en: 'Listen' },
   tipToListen: { hi: 'सुनकर समझें • Tap to listen', en: 'Tap to listen' },
   namaste: { hi: 'नमस्ते • Welcome', en: 'Welcome' },
@@ -42,7 +42,7 @@ export const OB = {
   phoneHint: { hi: 'जैसे 98110 54421', en: 'e.g. 98110 54421' },
   finalStep: { hi: 'अंतिम चरण • Final Step', en: 'Final Step' },
 
-  speaking: { hi: 'जनसेतु बोल रहा है', en: 'JANSETU is speaking' },
+  speaking: { hi: 'जनसेतु बोल रहा है', en: 'Jansetu is speaking' },
   chooseLanguage: { hi: 'अपनी भाषा चुनें', en: 'Choose your language' },
   typeInstead: { hi: 'कीबोर्ड से लिखें (Type instead)', en: 'Type instead' },
 
@@ -88,7 +88,7 @@ export const OB = {
   hindiVoice: { hi: '🗣️ हिन्दी • Hindi Voice', en: 'Hindi Voice' },
   sampleCommand: { hi: 'एक बार बोलकर देखें • Sample Command', en: 'Sample Command' },
   sampleGarbage: { hi: '“मेरे घर के बाहर कचरा पड़ा है”', en: '“Garbage outside my gate”' },
-  start: { hi: 'जनसेतु शुरू करें', en: 'Enter JANSETU' },
+  start: { hi: 'जनसेतु शुरू करें', en: 'Enter Jansetu' },
   dataSafe: { hi: 'नागरिक डेटा पूर्णतः सुरक्षित एवं एन्क्रिप्टेड है', en: 'Citizen data is fully secure and encrypted' },
   signedOut: { hi: 'बिना खाते के जारी रखें • Continue without an account', en: 'Continue without an account' },
   signInFailed: {

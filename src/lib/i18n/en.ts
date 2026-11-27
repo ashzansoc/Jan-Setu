@@ -6,7 +6,7 @@ import type { UiLang } from '@/lib/complaints/types'
  */
 export const en = {
   meta: {
-    name: 'JANSETU',
+    name: 'Jansetu',
     descriptor: 'VOICE-TO-ACTION',
     tagline: 'Your voice. Your rights. Your actions.',
   },
@@ -25,7 +25,7 @@ export const en = {
   home: {
     headline: 'Speak, we are listening',
     subline1: 'Tell us the problem in your own words.',
-    subline2: 'JANSETU will handle the rest.',
+    subline2: 'Jansetu will handle the rest.',
     tapToSpeak: 'Tap to speak',
     yourTurn: 'Your turn',
     listening: "I'm listening…",
@@ -138,7 +138,7 @@ export const en = {
     },
     heroTitle: 'Just speak, we handle the forms',
     heroBody:
-      'Describe the problem in Hindi, Hinglish, Marathi or any local dialect. JANSETU understands it and drafts the formal application to the government portal for you.',
+      'Describe the problem in Hindi, Hinglish, Marathi or any local dialect. Jansetu understands it and drafts the formal application to the government portal for you.',
     demoLabel: 'Hear a sample complaint',
     demoBadge: 'AI Demo',
     demoLine: 'The drain on lane number 4 is full of water…',
@@ -156,7 +156,7 @@ export const en = {
     changeNote: 'You can change this anytime in profile',
     step2Title: 'Let us set up your voice',
     step2Body:
-      'Allow the microphone and say a short line. JANSETU uses this to understand you better in your own language.',
+      'Allow the microphone and say a short line. Jansetu uses this to understand you better in your own language.',
     micTitle: 'Microphone',
     micBody: 'Needed to hear your complaint',
     micAllow: 'Allow microphone',
@@ -172,7 +172,7 @@ export const en = {
     readTest: 'Play a sample',
     speedTitle: 'Speaking speed',
     step3Title: 'What should we call you?',
-    step3Body: 'This is how JANSETU will greet you.',
+    step3Body: 'This is how Jansetu will greet you.',
     nameLabel: 'Your name',
     namePlaceholder: 'Your name',
     summaryTitle: 'Ready to begin',
@@ -229,7 +229,7 @@ export const en = {
     reference: 'Reference',
     afterSubmit: 'Assigned after submission',
     consentTitle: 'Send this complaint?',
-    consentBody: 'JANSETU will submit it to the municipal system below. You can track it afterwards.',
+    consentBody: 'Jansetu will submit it to the municipal system below. You can track it afterwards.',
     consentYes: 'Yes, submit it',
     consentNo: 'Not yet',
     submitting: 'Submitting…',
@@ -241,7 +241,7 @@ export const en = {
 
   replay: {
     title: 'Action Replay',
-    subtitle: 'Every step JANSETU took, in your words.',
+    subtitle: 'Every step Jansetu took, in your words.',
     tapToHear: 'Tap a step to hear it',
     steps: {
       request: 'Your request',
@@ -279,7 +279,7 @@ export const en = {
     waiting: 'Waiting',
     waitingNote: "We'll mark this only after the department officially confirms it.",
     copied: 'Copied',
-    shareTitle: (title: string) => `${title} — JANSETU`,
+    shareTitle: (title: string) => `${title} — Jansetu`,
     badges: {
       request: 'Understood',
       understanding: 'Processed',
@@ -454,12 +454,12 @@ export const en = {
     deleteConfirm: 'This deletes every complaint stored on this device. Continue?',
     simulatedTitle: 'About simulated data',
     simulatedBody:
-      'JANSETU is not connected to an official municipal API in this build. Complaints are saved on your device and marked as demo records. Nothing is sent to any government department.',
+      'Jansetu is not connected to an official municipal API in this build. Complaints are saved on your device and marked as demo records. Nothing is sent to any government department.',
     voiceSupport: 'Voice support',
     voiceSupportBody:
       'Bengali and Tamil speech work; their interface text remains in English for now.',
     startOver: 'Start over',
-    about: 'About JANSETU',
+    about: 'About Jansetu',
     version: 'Version 0.1.0 · Hackathon build',
     eyebrow: 'PROFILE',
     voiceSearch: 'Voice Search',
@@ -475,7 +475,7 @@ export const en = {
     sectionPlaces: 'PLACES & FAMILY',
     sectionPrivacy: 'PRIVACY & CONSENT',
     iSpeak: 'I speak in',
-    repliesIn: 'JANSETU replies in',
+    repliesIn: 'Jansetu replies in',
     repliesInSub: 'Voice & text',
     mixedLanguages: 'Understand mixed languages',
     mixedLanguagesSub: 'Switch languages mid-sentence',
@@ -507,10 +507,10 @@ export const en = {
       deleteSub: 'Remove recordings and history',
     },
     helpTitle: 'Need help? Just ask.',
-    helpSub: 'Talk to JANSETU help in your language',
+    helpSub: 'Talk to Jansetu help in your language',
     activateVoiceHelp: 'Activate voice help',
     signOut: 'Sign out',
-    footer: 'JANSETU v1.0 · Your voice. Your rights. Your actions.',
+    footer: 'Jansetu v1.0 · Your voice. Your rights. Your actions.',
   },
 
   places: {
@@ -523,7 +523,7 @@ export const en = {
     guidance:
       'Here you can change your addresses और भरोसेमंद मददगार बदल सकते हैं। शिकायत दर्ज करते समय यह आवाज़ से आसानी से चुना जा सकता है।',
     guidanceSub:
-      'Manage places and helpers. Speak your complaint and JANSETU automatically picks the right address.',
+      'Manage places and helpers. Speak your complaint and Jansetu automatically picks the right address.',
     savedTitle: 'Saved Addresses',
     savedSub: 'Manage the places you file from',
     activeCount: (n: number) => `${n} Active`,
@@ -570,17 +570,17 @@ export const en = {
     previewTitle: 'How this works in a complaint • Quick Preview',
     previewSpeak: 'Say:',
     previewLine: 'The drain outside my home is blocked and water is overflowing',
-    previewAuto: 'JANSETU will automatically',
+    previewAuto: 'Jansetu will automatically',
     previewPicks: 'pick this address.',
     shortcutChips: 'Shortcut Chips:',
   },
 
   action: {
     title: 'Action Centre',
-    subtitle: 'What JANSETU is doing for you right now.',
-    empty: 'No tasks yet. Ask JANSETU to do something and it will appear here.',
-    newTask: 'Ask JANSETU to do something',
-    activeTask: 'JANSETU is working on this',
+    subtitle: 'What Jansetu is doing for you right now.',
+    empty: 'No tasks yet. Ask Jansetu to do something and it will appear here.',
+    newTask: 'Ask Jansetu to do something',
+    activeTask: 'Jansetu is working on this',
     viewPlan: 'View plan',
     pause: 'Pause',
     resume: 'Resume',
@@ -588,7 +588,7 @@ export const en = {
     cancelConfirm: 'Cancel this task? Completed steps are kept.',
     provide: 'Provide',
     approveStep: 'Approve this step',
-    approveBody: 'JANSETU is about to contact an external service with the details below.',
+    approveBody: 'Jansetu is about to contact an external service with the details below.',
     approved: 'Approved',
     waiting: 'Waiting for you',
     progress: 'Progress',
@@ -676,7 +676,7 @@ export const en = {
       'Paani nahi aa raha',
       'Naali block hai',
     ],
-    continue: 'Continue with JANSETU AI (आगे बढ़ें)',
+    continue: 'Continue with Jansetu AI (आगे बढ़ें)',
     backToVoice: 'Back to Voice (बोलकर बताएं)',
   },
 
@@ -702,7 +702,7 @@ export const en = {
     micNotFound: 'No microphone was found on this device. You can type instead.',
     micUnavailable: 'Voice input is not available in this browser. Try Chrome or Safari, or type instead.',
     voiceUnavailable: 'The voice service could not be reached. Check your connection and try again, or type instead.',
-    insecure: 'Voice needs a secure connection. Open JANSETU on https or localhost.',
+    insecure: 'Voice needs a secure connection. Open Jansetu on https or localhost.',
     micBusy: 'The microphone is busy in another app. Close it and try again.',
     generic: 'Something went wrong. Please try again.',
     emptySpeech: "I didn't catch that. Try once more, a little closer to the microphone.",

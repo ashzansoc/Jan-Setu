@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.jansetu.app',
-  appName: 'JANSETU',
+  appName: 'Jansetu',
   webDir: 'dist',
   android: {
     // The WebView loads the bundle from https://localhost while the bundled app

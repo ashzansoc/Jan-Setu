@@ -159,9 +159,9 @@ export function Header() {
   return (
     <header className="safe-x flex items-center justify-between gap-2 pb-1 pt-[max(14px,env(safe-area-inset-top))]">
       <div className="flex min-w-0 items-center gap-2.5">
-        <Logo size={44} variant="transparent" />
+        <Logo size={57} variant="transparent" />
         <div className="truncate whitespace-nowrap text-[1.09375rem] font-extrabold leading-none tracking-[0.05em] text-ink">
-          <span className="deva text-[1.3125rem]">जन</span>SETU
+          <span className="deva text-[1.3125rem]">जन</span>Jansetu
         </div>
       </div>
       <div className="flex shrink-0 items-center gap-2">

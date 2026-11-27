@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">JANSETU</string>
-    <string name="title_activity_main">JANSETU</string>
+    <string name="app_name">Jansetu</string>
+    <string name="title_activity_main">Jansetu</string>
     <string name="package_name">com.jansetu.app</string>
     <string name="custom_url_scheme">com.jansetu.app</string>
 </resources>

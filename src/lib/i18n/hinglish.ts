@@ -7,7 +7,7 @@ import type { Dictionary } from './en'
  */
 export const hinglish: Dictionary = {
   meta: {
-    name: 'JANSETU',
+    name: 'Jansetu',
     descriptor: 'VOICE-TO-ACTION',
     tagline: 'Aapki awaaz. Aapke haq. Aapke kadam.',
   },
@@ -26,7 +26,7 @@ export const hinglish: Dictionary = {
   home: {
     headline: 'Bolkar batayein',
     subline1: 'Apni samasya apne shabdon mein batayein.',
-    subline2: 'Baaki kaam JANSETU sambhal lega.',
+    subline2: 'Baaki kaam Jansetu sambhal lega.',
     tapToSpeak: 'Bolkar batayein',
     yourTurn: 'Aapki baari',
     listening: 'Main sun raha hoon…',
@@ -139,7 +139,7 @@ export const hinglish: Dictionary = {
     },
     heroTitle: 'Bas boliye, form hum bharenge',
     heroBody:
-      'Hindi, Hinglish, Marathi ya apni kisi bhi local boli mein samasya batayein. JANSETU aapki baat samajhkar seedhe sarkari portal ka formal aavedan bana dega.',
+      'Hindi, Hinglish, Marathi ya apni kisi bhi local boli mein samasya batayein. Jansetu aapki baat samajhkar seedhe sarkari portal ka formal aavedan bana dega.',
     demoLabel: 'Namoona shikayat sunein',
     demoBadge: 'AI Demo',
     demoLine: 'Gali number 4 mein naali ka paani bhara hua hai...',
@@ -157,7 +157,7 @@ export const hinglish: Dictionary = {
     changeNote: 'Aap ise kabhi bhi profile mein badal sakte hain',
     step2Title: 'Aaiye aapki awaaz set karein',
     step2Body:
-      'Microphone ki permission dein aur ek chhota vaakya bolein. JANSETU isse aapki apni bhasha mein aapko behtar samajh payega.',
+      'Microphone ki permission dein aur ek chhota vaakya bolein. Jansetu isse aapki apni bhasha mein aapko behtar samajh payega.',
     micTitle: 'Microphone',
     micBody: 'Aapki shikayat sunne ke liye zaroori',
     micAllow: 'Microphone ki permission dein',
@@ -173,7 +173,7 @@ export const hinglish: Dictionary = {
     readTest: 'Namoona chalayein',
     speedTitle: 'Bolne ki raftaar',
     step3Title: 'Hum aapko kya bulaayein?',
-    step3Body: 'JANSETU aapko isi naam se sambodhit karega.',
+    step3Body: 'Jansetu aapko isi naam se sambodhit karega.',
     nameLabel: 'Aapka naam',
     namePlaceholder: 'Aapka naam',
     summaryTitle: 'Shuru karne ke liye taiyaar',
@@ -230,7 +230,7 @@ export const hinglish: Dictionary = {
     reference: 'Reference',
     afterSubmit: 'Bhejne ke baad milega',
     consentTitle: 'Yeh shikayat bhejein?',
-    consentBody: 'JANSETU ise niche diye municipal system ko bhejega. Aap baad mein track kar sakte hain.',
+    consentBody: 'Jansetu ise niche diye municipal system ko bhejega. Aap baad mein track kar sakte hain.',
     consentYes: 'Haan, bhej do',
     consentNo: 'Abhi nahi',
     submitting: 'Bhej raha hoon…',
@@ -242,7 +242,7 @@ export const hinglish: Dictionary = {
 
   replay: {
     title: 'Dobara sunayein',
-    subtitle: 'JANSETU ne jo har kadam uthaya, aapke shabdon mein.',
+    subtitle: 'Jansetu ne jo har kadam uthaya, aapke shabdon mein.',
     tapToHear: 'Sunnne ke liye kisi kadam par dabayein',
     steps: {
       request: 'Aapki request',
@@ -280,7 +280,7 @@ export const hinglish: Dictionary = {
     waiting: 'Intezaar',
     waitingNote: 'Hum ise tabhi hal mark karenge jab vibhag official tasdeeq karega.',
     copied: 'Copy ho gaya',
-    shareTitle: (title: string) => `${title} — JANSETU`,
+    shareTitle: (title: string) => `${title} — Jansetu`,
     badges: {
       request: 'Samajh gaya',
       understanding: 'Process hua',
@@ -455,12 +455,12 @@ export const hinglish: Dictionary = {
     deleteConfirm: 'Yeh is device par rakhi har shikayat delete kar dega. Aage badhein?',
     simulatedTitle: 'Nakli data ke baare mein',
     simulatedBody:
-      'Is build mein JANSETU kisi official municipal API se juda nahi hai. Shikayatein aapke device par save hoti hain aur demo record ke roop mein mark hoti hain. Kisi bhi sarkari vibhag ko kuch nahi bheja jata.',
+      'Is build mein Jansetu kisi official municipal API se juda nahi hai. Shikayatein aapke device par save hoti hain aur demo record ke roop mein mark hoti hain. Kisi bhi sarkari vibhag ko kuch nahi bheja jata.',
     voiceSupport: 'Awaaz support',
     voiceSupportBody:
       'Bengali aur Tamil ki awaaz chalti hai; unka interface text abhi English mein rahega.',
     startOver: 'Shuru se karein',
-    about: 'JANSETU ke baare mein',
+    about: 'Jansetu ke baare mein',
     version: 'Version 0.1.0 · Hackathon build',
     eyebrow: 'प्रोफ़ाइल',
     voiceSearch: 'Awaaz se dhoondein',
@@ -476,7 +476,7 @@ export const hinglish: Dictionary = {
     sectionPlaces: 'PLACES & FAMILY',
     sectionPrivacy: 'PRIVACY & CONSENT',
     iSpeak: 'Main yeh bolta/bolti hoon',
-    repliesIn: 'JANSETU isme reply karega',
+    repliesIn: 'Jansetu isme reply karega',
     repliesInSub: 'Awaaz aur text',
     mixedLanguages: 'Mixed bhasha samjhe',
     mixedLanguagesSub: 'Beech waqt mein bhasha badlein',
@@ -508,10 +508,10 @@ export const hinglish: Dictionary = {
       deleteSub: 'Recording aur history hataayein',
     },
     helpTitle: 'Madad chahiye? Bas poochein.',
-    helpSub: 'Apni bhasha mein JANSETU se madad lein',
+    helpSub: 'Apni bhasha mein Jansetu se madad lein',
     activateVoiceHelp: 'Awaaz madad shuru karein',
     signOut: 'Sign out',
-    footer: 'JANSETU v1.0 · Your voice. Your rights. Your actions.',
+    footer: 'Jansetu v1.0 · Your voice. Your rights. Your actions.',
   },
 
   places: {
@@ -524,7 +524,7 @@ export const hinglish: Dictionary = {
     guidance:
       'Yahan aap apne pate aur bharoseemand madadgar badal sakte hain. Shikayat darj karte waqt yeh awaaz se aasani se chuna ja sakta hai.',
     guidanceSub:
-      'Manage places and helpers. Speak your complaint and JANSETU automatically picks the right address.',
+      'Manage places and helpers. Speak your complaint and Jansetu automatically picks the right address.',
     savedTitle: 'Sahje hue pate',
     savedSub: 'Saved Addresses',
     activeCount: (n: number) => `${n} Active`,
@@ -571,17 +571,17 @@ export const hinglish: Dictionary = {
     previewTitle: 'Shikayat mein yeh kaise kaam karega? • Quick Preview',
     previewSpeak: 'Bolein:',
     previewLine: 'Mere ghar ke bahar naali block hai aur paani bhar raha hai',
-    previewAuto: 'JANSETU svayam',
+    previewAuto: 'Jansetu svayam',
     previewPicks: 'chun lega.',
     shortcutChips: 'Shortcut Chips:',
   },
 
   action: {
     title: 'Action Centre',
-    subtitle: 'JANSETU abhi aapke liye kya kar raha hai.',
-    empty: 'Abhi koi task nahi hai. JANSETU se kuch karwayein, woh yahan dikhega.',
-    newTask: 'JANSETU se kuch karwayein',
-    activeTask: 'JANSETU is par kaam kar raha hai',
+    subtitle: 'Jansetu abhi aapke liye kya kar raha hai.',
+    empty: 'Abhi koi task nahi hai. Jansetu se kuch karwayein, woh yahan dikhega.',
+    newTask: 'Jansetu se kuch karwayein',
+    activeTask: 'Jansetu is par kaam kar raha hai',
     viewPlan: 'Plan dekhein',
     pause: 'Rokein',
     resume: 'Phir shuru karein',
@@ -589,7 +589,7 @@ export const hinglish: Dictionary = {
     cancelConfirm: 'Yeh task cancel karein? Jo steps ho chuke hain woh rahenge.',
     provide: 'Bharein',
     approveStep: 'Is step ko approve karein',
-    approveBody: 'JANSETU neeche diye details ke saath kisi bahari service se contact karne wala hai.',
+    approveBody: 'Jansetu neeche diye details ke saath kisi bahari service se contact karne wala hai.',
     approved: 'Approved',
     waiting: 'Aapka intezaar hai',
     progress: 'Progress',
@@ -677,7 +677,7 @@ export const hinglish: Dictionary = {
       'Paani nahi aa raha',
       'Naali block hai',
     ],
-    continue: 'Continue with JANSETU AI (आगे बढ़ें)',
+    continue: 'Continue with Jansetu AI (आगे बढ़ें)',
     backToVoice: 'Back to Voice (बोलकर बताएं)',
   },
 
@@ -703,7 +703,7 @@ export const hinglish: Dictionary = {
     micNotFound: 'Is device par koi microphone nahi mila. Aap likhkar bata sakte hain.',
     micUnavailable: 'Is browser mein awaaz available nahi hai. Chrome ya Safari try karein, ya likhkar batayein.',
     voiceUnavailable: 'Voice service se contact nahi ho saka. Connection check karein aur phir try karein, ya likhkar batayein.',
-    insecure: 'Awaaz ke liye secure connection chahiye. JANSETU ko https ya localhost par kholein.',
+    insecure: 'Awaaz ke liye secure connection chahiye. Jansetu ko https ya localhost par kholein.',
     micBusy: 'Microphone kisi aur app mein busy hai. Use band karein aur phir try karein.',
     generic: 'Kuch galat ho gaya. Kripya phir try karein.',
     emptySpeech: 'Main samajh nahi paaya. Thoda paas se ek baar phir bolein.',

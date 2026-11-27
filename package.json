@@ -10,6 +10,7 @@
     "dev:all": "concurrently -n web,api -c cyan,magenta \"npm:dev\" \"npm:api\"",
     "build": "tsc -b && vite build",
     "build:mobile": "tsc -b && VITE_AI_MODE=local vite build && cap sync android",
+    "build:ios": "tsc -b && VITE_AI_MODE=local vite build && cap sync ios",
     "preview": "vite preview --port 5173",
     "typecheck": "tsc -b --noEmit"
   },
@@ -22,6 +23,7 @@
     "@fontsource/noto-sans-devanagari": "^5.2.5",
     "@fontsource/noto-sans-tamil": "^5.2.5",
     "@hono/node-server": "^1.14.0",
+    "@jansetu/google-sign-in": "file:plugins/google-sign-in",
     "@react-three/fiber": "^9.8.2",
     "@react-three/postprocessing": "^3.2.2",
     "@tabler/icons-react": "^3.53.0",

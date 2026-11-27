@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   setPersistence,
   signInAnonymously,
+  signInWithCredential,
   signInWithPopup,
   signInWithRedirect,
   signOut as firebaseSignOut,
@@ -13,6 +14,7 @@ import {
 } from 'firebase/auth'
 import { getFirebaseAuth } from './client'
 import { Capacitor } from '@capacitor/core'
+import JansetuGoogleSignIn from '@jansetu/google-sign-in'
 
 export interface AuthState {
   user: User | null
@@ -29,9 +31,10 @@ export interface AuthState {
  *
  * Production-grade notes:
  * - `browserLocalPersistence` keeps the session across reloads/relaunches.
- * - Google sign-in uses a popup, and transparently falls back to a full-page
- *   redirect when the popup is blocked or unsupported (as in some in-app
- *   webviews). `getRedirectResult` completes a redirect flow on the next load.
+ * - Google sign-in uses the native account sheet on iOS/Android (Google blocks
+ *   OAuth in embedded WebViews) and a popup on the web, falling back to a
+ *   full-page redirect when the popup is blocked. `getRedirectResult` completes
+ *   a redirect flow on the next load.
  * - Errors are surfaced as short human strings, never thrown, so a failed
  *   sign-in cannot break the screen.
  */
@@ -70,19 +73,22 @@ export function useAuth(): AuthState {
     provider.setCustomParameters({ prompt: 'select_account' })
     try {
       await setPersistence(auth, browserLocalPersistence).catch(() => {})
-      // A WebView cannot host the popup: Android hands the auth window to
-      // Chrome and the result never returns. The redirect flow is the fallback,
-      // but Google refuses to run OAuth inside an embedded WebView, so the
-      // navigation can be cancelled without the promise ever settling. Race it
-      // against a short timeout so the button resets and the citizen is told
-      // what to do instead of being left with a greyed-out control.
+      // A WebView cannot host the popup, and Google refuses to run OAuth in an
+      // embedded WebView at all, so the JS redirect flow can never complete on
+      // a native build. iOS uses the native Google sheet and exchanges the ID
+      // token it returns for a Firebase credential.
+      if (Capacitor.getPlatform() === 'ios') {
+        const result = await JansetuGoogleSignIn.signIn()
+        const credential = GoogleAuthProvider.credential(result.idToken)
+        await signInWithCredential(auth, credential)
+        return
+      }
       if (Capacitor.isNativePlatform()) {
-        await Promise.race([
-          signInWithRedirect(auth, provider),
-          new Promise<never>((_, reject) =>
-            setTimeout(() => reject(new Error('redirect-unavailable')), 6000),
-          ),
-        ])
+        // Android has no native Google sheet wired yet; say so instead of
+        // leaving the button greyed out while a redirect that cannot complete.
+        setError(
+          'Google sign-in is not available in the Android build yet. Continue without an account — your complaints still work on this device.',
+        )
         return
       }
       await signInWithPopup(auth, provider)
@@ -131,6 +137,11 @@ export function useAuth(): AuthState {
   const signOut = useCallback(async () => {
     setError(null)
     try {
+      // Clear the native Google session too, otherwise the account picker
+      // silently signs the same citizen back in on the next attempt.
+      if (Capacitor.getPlatform() === 'ios') {
+        await JansetuGoogleSignIn.signOut().catch(() => {})
+      }
       await firebaseSignOut(getFirebaseAuth())
     } catch (cause) {
       setError(friendlyAuthError(cause))

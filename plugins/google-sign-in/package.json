@@ -1,0 +1,17 @@
+{
+  "name": "@jansetu/google-sign-in",
+  "version": "1.0.0",
+  "description": "Native Google Sign-In bridge for JANSETU (vendored for SPM)",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "license": "MIT",
+  "private": true,
+  "peerDependencies": {
+    "@capacitor/core": ">=8.0.0"
+  },
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    }
+  }
+}

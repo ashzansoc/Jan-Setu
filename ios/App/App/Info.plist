@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>JANSETU</string>
+        <string>Jansetu</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -72,7 +72,22 @@
   <string>JANSETU uses the camera to attach a photo of the problem to your complaint, if you choose to add one.</string>
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>JANSETU uses your location to pick the right municipal ward for your complaint. You can always type the address instead.</string>
-  <key>NSPhotoLibraryUsageDescription</key>
+	<key>NSPhotoLibraryUsageDescription</key>
   <string>JANSETU saves a photo you attach to a complaint only if you choose to keep it.</string>
+  <key>GIDClientID</key>
+  <string>393384436037-9luraa86rast67rucvd1n4nsll7qrtrp.apps.googleusercontent.com</string>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>CFBundleURLName</key>
+      <string>com.googleusercontent.apps.393384436037-9luraa86rast67rucvd1n4nsll7qrtrp</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>com.googleusercontent.apps.393384436037-9luraa86rast67rucvd1n4nsll7qrtrp</string>
+      </array>
+    </dict>
+  </array>
 </dict>
 </plist>

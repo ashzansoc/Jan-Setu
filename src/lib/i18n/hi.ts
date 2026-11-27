@@ -507,7 +507,7 @@ export const hi: Dictionary = {
     helpSub: 'अपनी भाषा में जनसेतु से मदद लें',
     activateVoiceHelp: 'आवाज़ मदद शुरू करें',
     signOut: 'साइन आउट',
-    footer: 'JANSETU v1.0 · Your voice. Your rights. Your actions.',
+    footer: 'Jansetu v1.0 · Your voice. Your rights. Your actions.',
   },
 
   places: {
@@ -520,7 +520,7 @@ export const hi: Dictionary = {
     guidance:
       'यहाँ आप अपने पते और भरोसेमंद मददगार बदल सकते हैं। शिकायत दर्ज करते समय यह आवाज़ से आसानी से चुना जा सकता है।',
     guidanceSub:
-      'Manage places and helpers. Speak your complaint and JANSETU automatically picks the right address.',
+      'Manage places and helpers. Speak your complaint and Jansetu automatically picks the right address.',
     savedTitle: 'सहेजे गए पते',
     savedSub: 'Saved Addresses',
     activeCount: (n: number) => `${n} सक्रिय`,
@@ -567,7 +567,7 @@ export const hi: Dictionary = {
     previewTitle: 'शिकायत में यह कैसे काम करेगा? • Quick Preview',
     previewSpeak: 'बोलें:',
     previewLine: 'मेरे घर के बाहर नाली ब्लॉक है और पानी भर रहा है',
-    previewAuto: 'JANSETU स्वतः',
+    previewAuto: 'Jansetu स्वतः',
     previewPicks: 'चुन लेगा।',
     shortcutChips: 'Shortcut Chips:',
   },
@@ -673,7 +673,7 @@ export const hi: Dictionary = {
       'Paani nahi aa raha',
       'Naali block hai',
     ],
-    continue: 'Continue with JANSETU AI (आगे बढ़ें)',
+    continue: 'Continue with Jansetu AI (आगे बढ़ें)',
     backToVoice: 'Back to Voice (बोलकर बताएं)',
   },
 

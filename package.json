@@ -9,6 +9,7 @@
     "api": "tsx watch --env-file=.env server/index.ts",
     "dev:all": "concurrently -n web,api -c cyan,magenta \"npm:dev\" \"npm:api\"",
     "build": "tsc -b && vite build",
+    "build:mobile": "tsc -b && VITE_AI_MODE=local vite build && cap sync android",
     "preview": "vite preview --port 5173",
     "typecheck": "tsc -b --noEmit"
   },

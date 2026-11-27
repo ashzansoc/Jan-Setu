@@ -27,7 +27,7 @@ export function ObHeader({
   const stepLabel = lang === 'hi' ? `चरण ${step} / ${total}` : `Step ${step} of ${total}`
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 bg-surface/85 pt-safe backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <header className="fixed inset-x-0 top-0 z-40 bg-surface/85 pt-[max(10px,env(safe-area-inset-top))] backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
       <div className="mx-auto flex h-16 w-full max-w-[560px] items-center justify-between px-4">
         {onBack ? (
           <button

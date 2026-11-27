@@ -52,7 +52,7 @@ export function OnboardingFlow() {
   const say = (hi: string) => void speak(hi, { lang: 'hi-IN', rate: 0.95 })
 
   return (
-    <div className="flex h-svh flex-col overflow-hidden bg-surface pb-safe">
+    <div className="flex h-svh flex-col overflow-hidden bg-surface pb-[env(safe-area-inset-bottom)]">
       <ObHeader
         step={stepIndex + 1}
         total={TOTAL}
@@ -61,7 +61,7 @@ export function OnboardingFlow() {
         variant={step === 'language' || step === 'ready' ? 'pill' : 'default'}
       />
 
-      <main className="mx-auto w-full max-w-[560px] flex-1 overflow-y-auto overscroll-contain pb-6 pt-20">
+      <main className="mx-auto w-full max-w-[560px] flex-1 overflow-y-auto overscroll-contain pb-6 pt-[calc(env(safe-area-inset-top)+6rem)]">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={step}

@@ -10,7 +10,8 @@ import { useConversation, useAudioLevel } from '@/state/conversation'
 import { useComplaints, draftFromExtraction } from '@/state/complaints'
 import { useSettings } from '@/state/settings'
 import { Capacitor } from '@capacitor/core'
-import { isAsrSupported, isSecureContextOk, startAsr, type AsrSession } from '@/lib/voice/asr'
+import { isAsrSupported, isSecureContextOk, startAsr, type AsrHandlers, type AsrSession } from '@/lib/voice/asr'
+import { isNativeAsrSupported, startNativeAsr } from '@/lib/voice/native-asr'
 import {
   startRecorderAsr,
   isRecorderSupported,
@@ -174,10 +175,13 @@ export async function beginListening(): Promise<void> {
   if (!isElevenLabsActive()) await loadVoiceConfig()
   const useWebSpeech = isAsrSupported() && !native
   const useRecorder = isRecorderSupported() && isElevenLabsActive() && (native || !isAsrSupported())
-  if (!useWebSpeech && !useRecorder) {
+  // With no transcription service reachable, fall back to the device's own
+  // recogniser so a packaged app can still take a spoken turn offline.
+  const useNativeAsr = native && !useRecorder && isNativeAsrSupported()
+  if (!useWebSpeech && !useRecorder && !useNativeAsr) {
     // Distinguish "this browser cannot record" from "the voice service could
     // not be reached", so the message tells the citizen what to do next.
-    state().setError(isRecorderSupported() ? 'voiceUnavailable' : 'micUnavailable')
+    state().setError(isRecorderSupported() || isNativeAsrSupported() ? 'voiceUnavailable' : 'micUnavailable')
     return
   }
 
@@ -252,47 +256,51 @@ export async function beginListening(): Promise<void> {
     return
   }
 
-  asrSession = startAsr({
-    lang,
-    handlers: {
-      onInterim: (text) => {
-        if (useConversation.getState().phase === 'listening') {
-          useConversation.getState().setInterim(text)
-        }
-      },
-      onFinal: (text) => {
-        pendingFinal = text
-      },
-      onError: (code) => {
-        if (code === 'no-speech') return
-        stopLevels()
-        const key =
-          code === 'denied'
-            ? 'micDenied'
-            : code === 'unavailable'
-              ? 'micNotFound'
-              : code === 'busy'
-                ? 'micBusy'
-                : 'generic'
-        state().setError(key, code)
-      },
-      onEnd: (reason) => {
-        stopLevels()
-        const text = pendingFinal.trim()
-        pendingFinal = ''
-        if (useConversation.getState().phase !== 'listening') return
-        if (reason === 'error') return
-        if (!text || isSelfEcho(text)) {
-          if (useConversation.getState().errorKey === null) {
-            state().setPhase('idle')
-            state().setInterim('')
-          }
-          return
-        }
-        void ingest(text)
-      },
+  const asrHandlers: AsrHandlers = {
+    onInterim: (text) => {
+      if (useConversation.getState().phase === 'listening') {
+        useConversation.getState().setInterim(text)
+      }
     },
-  })
+    onFinal: (text) => {
+      pendingFinal = text
+    },
+    onError: (code) => {
+      if (code === 'no-speech') return
+      stopLevels()
+      const key =
+        code === 'denied'
+          ? 'micDenied'
+          : code === 'unavailable'
+            ? 'micNotFound'
+            : code === 'busy'
+              ? 'micBusy'
+              : 'generic'
+      state().setError(key, code)
+    },
+    onEnd: (reason) => {
+      stopLevels()
+      const text = pendingFinal.trim()
+      pendingFinal = ''
+      if (useConversation.getState().phase !== 'listening') return
+      if (reason === 'error') return
+      if (!text || isSelfEcho(text)) {
+        if (useConversation.getState().errorKey === null) {
+          state().setPhase('idle')
+          state().setInterim('')
+        }
+        return
+      }
+      void ingest(text)
+    },
+  }
+
+  if (useNativeAsr) {
+    asrSession = startNativeAsr({ lang, handlers: asrHandlers })
+    return
+  }
+
+  asrSession = startAsr({ lang, handlers: asrHandlers })
 }
 
 export function finishListening(): void {

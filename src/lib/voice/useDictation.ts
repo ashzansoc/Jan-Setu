@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { isAsrSupported, isSecureContextOk, startAsr, type AsrErrorCode, type AsrSession } from './asr'
+import { isAsrSupported, isSecureContextOk, startAsr, type AsrErrorCode, type AsrHandlers, type AsrSession } from './asr'
+import { isNativeAsrSupported, startNativeAsr } from './native-asr'
 import { startLevels, type LevelSession } from './levels'
 
 /**
@@ -43,7 +44,7 @@ export function useDictation(options: {
       setError('unavailable')
       return
     }
-    if (!isAsrSupported()) {
+    if (!isAsrSupported() && !isNativeAsrSupported()) {
       setError('unavailable')
       return
     }
@@ -58,27 +59,30 @@ export function useDictation(options: {
       else session.stop()
     })
 
-    sessionRef.current = startAsr({
-      lang,
-      silenceMs,
-      handlers: {
-        onInterim: (text) => setInterim(text),
-        onFinal: (text) => {
-          finalRef.current = text
-        },
-        onError: (code) => {
-          if (code === 'no-speech' || code === 'aborted') return
-          teardown()
-          setError(code)
-        },
-        onEnd: () => {
-          teardown()
-          setInterim('')
-          const text = finalRef.current.trim()
-          if (text) finalCallback.current(text)
-        },
+    const handlers: AsrHandlers = {
+      onInterim: (text) => setInterim(text),
+      onFinal: (text) => {
+        finalRef.current = text
       },
-    })
+      onError: (code) => {
+        if (code === 'no-speech' || code === 'aborted') return
+        teardown()
+        setError(code)
+      },
+      onEnd: () => {
+        teardown()
+        setInterim('')
+        const text = finalRef.current.trim()
+        if (text) finalCallback.current(text)
+      },
+    }
+
+    // Web Speech where it exists; otherwise the device recogniser, so dictation
+    // keeps working in the packaged app with no transcription service.
+    sessionRef.current =
+      isAsrSupported() && !isNativeAsrSupported()
+        ? startAsr({ lang, silenceMs, handlers })
+        : startNativeAsr({ lang, silenceMs, handlers })
   }, [lang, silenceMs, teardown])
 
   return { listening, interim, level, error, start, stop: teardown }

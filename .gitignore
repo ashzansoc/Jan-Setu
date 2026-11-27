@@ -23,3 +23,6 @@ android/local.properties
 
 # Agent tool state
 .zcode/
+
+# SwiftPM metadata for the vendored plugin
+plugins/speech-recognition/.swiftpm/

@@ -71,15 +71,29 @@ export function useAuth(): AuthState {
     try {
       await setPersistence(auth, browserLocalPersistence).catch(() => {})
       // A WebView cannot host the popup: Android hands the auth window to
-      // Chrome and the result never returns to the app. Use the redirect flow
-      // inside the WebView (allowed via server.allowNavigation), which comes
-      // back to https://localhost and is completed by getRedirectResult above.
+      // Chrome and the result never returns. The redirect flow is the fallback,
+      // but Google refuses to run OAuth inside an embedded WebView, so the
+      // navigation can be cancelled without the promise ever settling. Race it
+      // against a short timeout so the button resets and the citizen is told
+      // what to do instead of being left with a greyed-out control.
       if (Capacitor.isNativePlatform()) {
-        await signInWithRedirect(auth, provider)
+        await Promise.race([
+          signInWithRedirect(auth, provider),
+          new Promise<never>((_, reject) =>
+            setTimeout(() => reject(new Error('redirect-unavailable')), 6000),
+          ),
+        ])
         return
       }
       await signInWithPopup(auth, provider)
     } catch (cause) {
+      const message = (cause as { message?: string } | null)?.message ?? ''
+      if (message === 'redirect-unavailable') {
+        setError(
+          'Google sign-in cannot complete inside the app. Continue without an account — your complaints still work on this device.',
+        )
+        return
+      }
       const code = (cause as { code?: string } | null)?.code ?? ''
       // Popup blocked / unsupported (common in webviews) → redirect instead.
       if (

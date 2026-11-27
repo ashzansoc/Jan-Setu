@@ -9,11 +9,7 @@ import type { LocalToolResult } from './local'
  */
 
 function apiBase(): string {
-  const fromEnv = import.meta.env.VITE_API_BASE_URL?.trim()
-  if (fromEnv) return fromEnv
-  const native = (window as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor
-  if (native?.isNativePlatform?.()) return 'http://127.0.0.1:8787'
-  return ''
+  return import.meta.env.VITE_API_BASE_URL?.trim() ?? ''
 }
 
 async function post<T>(path: string, body: unknown): Promise<{ ok: boolean; status: number; data: T | null; error?: string }> {

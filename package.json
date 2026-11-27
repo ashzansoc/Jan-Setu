@@ -14,7 +14,7 @@
     "typecheck": "tsc -b --noEmit"
   },
   "dependencies": {
-    "@capacitor-community/speech-recognition": "^7.0.1",
+    "@capacitor-community/speech-recognition": "file:plugins/speech-recognition",
     "@capacitor/android": "^8.6.2",
     "@capacitor/status-bar": "^8.0.4",
     "@fontsource-variable/inter": "^5.2.5",
